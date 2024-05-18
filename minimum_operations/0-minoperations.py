@@ -1,10 +1,17 @@
 #!/usr/bin/python3
-"""minimum operations"""
+"""mini operations"""
 def minOperations(n):
-  if n == 1:
-    return 0
-  elif n % 2 == 0:
-    return minOperations(n//2) + 1
-  else:
-    return min(minOperations(n-1), minOperations(n+1)) + 1
-print(minOperations(9))
+    if n <= 1:
+        return 0
+
+    ops = 0
+    divisor = 2
+
+    while n > 1:
+        if n % divisor == 0:
+            ops += divisor
+            n = n // divisor
+        else:
+            divisor += 1
+
+    return ops
